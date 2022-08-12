@@ -31,11 +31,11 @@ public class LinkedList {
     }
     public Node add(int value) {
         Node node = new Node(value);
-        if (this.length == 0) {
-            this.first = node;
-            this.last = node;
-            this.first.setNext(this.getLast());
-            this.last.setPrev(this.getFirst());
+        if (this.getLength() == 0) {
+            this.setFirst(node);
+            this.setLast(node);
+            this.getFirst().setNext(this.getLast());
+            this.getLast().setPrev(this.getFirst());
         } else {
             this.last.setNext(node);
             this.setLast(this.last.getNext());
