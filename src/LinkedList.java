@@ -1,6 +1,6 @@
 public class LinkedList {
-    private Node first;
-    private Node last;
+    private LinkedNode first;
+    private LinkedNode last;
     private short length;
 
     public LinkedList() {
@@ -9,36 +9,36 @@ public class LinkedList {
         this.length = 0;
     }
 
-    public Node getFirst() {
+    public LinkedNode getFirst() {
         return first;
     }
 
-    public void setFirst(Node first) {
+    public void setFirst(LinkedNode first) {
         this.first = first;
 
     }
 
-    public Node getLast() {
+    public LinkedNode getLast() {
         return last;
     }
 
-    public void setLast(Node last) {
+    public void setLast(LinkedNode last) {
         this.last = last;
     }
-
+    private void setBoth(LinkedNode node) {
+        this.setFirst(node);
+        this.setLast(node);
+    }
     public short getLength() {
         return length;
     }
-    public Node add(int value) {
-        Node node = new Node(value);
+    public LinkedNode add(int value) {
+        LinkedNode node = new LinkedNode(value);
         if (this.getLength() == 0) {
-            this.setFirst(node);
-            this.setLast(node);
-            this.getFirst().setNext(this.getLast());
-            this.getLast().setPrev(this.getFirst());
+            this.setBoth(node);
         } else {
-            this.last.setNext(node);
-            this.setLast(this.last.getNext());
+            this.getLast().setNext(node);
+            this.setLast(node);
         }
         this.length++;
         return this.getLast();
